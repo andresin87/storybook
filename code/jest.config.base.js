@@ -16,6 +16,7 @@ const skipOnWindows = [
   'lib/csf-tools/src/enrichCsf.test.ts',
 ];
 
+/** @type { import('jest').Config } */
 module.exports = {
   cacheDirectory: path.resolve('.cache/jest'),
   clearMocks: true,
@@ -30,7 +31,9 @@ module.exports = {
     '^.+\\.(t|j)sx?$': '@swc/jest',
     '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
-  transformIgnorePatterns: ['/node_modules/(?!@angular|rxjs|nanoid|uuid|lit-html|@mdx-js)'],
+  transformIgnorePatterns: [
+    // '(?<!node_modules.+)node_modules/(?!remark|unified|vfile-message|mdast|micromark|decode-named-character-reference)',
+  ],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
   testPathIgnorePatterns: [
     '/storybook-static/',
